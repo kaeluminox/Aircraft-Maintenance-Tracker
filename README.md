@@ -1,4 +1,4 @@
-# Aircraft Maintenance Tracker ✈️
+# Aircraft Maintenance Tracker 
 
 A web-based application for recording and tracking aircraft maintenance tasks, built with Python and Flask. Developed as a capstone project connecting software development skills with an Airframe Powerplant background.
 
