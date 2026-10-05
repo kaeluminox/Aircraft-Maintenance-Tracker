@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/add">Tambah Data</a>
+        <a href="/view">Lihat Data</a>
+        <a href="/dashboard">Dashboard</a>
+    </nav>
+    <div class="container">
+        <h1>Dashboard Maintenance</h1>
+        <div style="display: flex; gap: 40px; align-items: center;">
+            <div style="width: 350px;">
+                <canvas id="statusChart"></canvas>
+            </div>
+            <div>
+                {% for status, count in status_counts %}
+                <div class="stat-card">
+                    <div class="stat-number">{{ count }}</div>
+                    <div class="stat-label">{{ status }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <script>
+            const labels = [{% for status, count in status_counts %}"{{ status }}",{% endfor %}];
+            const counts = [{% for status, count in status_counts %}{{ count }},{% endfor %}];
+
+            const ctx = document.getElementById('statusChart');
+            new Chart(ctx, {
+                type: 'pie',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Jumlah Task',
+                        data: counts,
+                        backgroundColor: ['#E07A5F', '#F2CC8F', '#4A90D9']
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: true
+                }
+            });
+        </script>

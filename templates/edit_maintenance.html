@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Data Maintenance</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/add">Tambah Data</a>
+        <a href="/view">Lihat Data</a>
+        <a href="/dashboard">Dashboard</a>
+    </nav>
+    <div class="container">
+        <h1>Edit Data Maintenance</h1>
+        <form method="POST" class="form-card">
+            <label>Aircraft/Component:</label><br>
+            <input type="text" name="aircraft" value="{{ item[1] }}"><br>
+
+            <label>Maintenance Task:</label><br>
+            <input type="text" name="task" value="{{ item[2] }}"><br>
+
+            <label>Status:</label><br>
+            <select name="status">
+                <option value="Pending" {% if item[3] == "Pending" %}selected{% endif %}>Pending</option>
+                <option value="In Progress" {% if item[3] == "In Progress" %}selected{% endif %}>In Progress</option>
+                <option value="Completed" {% if item[3] == "Completed" %}selected{% endif %}>Completed</option>
+            </select><br>
+
+            <label>Date:</label><br>
+            <input type="date" name="date" value="{{ item[4] }}"><br><br>
+
+            <button type="submit">Update</button>
+        </form>
+    </div>
+</body>
+</html>
