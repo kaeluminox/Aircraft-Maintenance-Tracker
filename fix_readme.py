@@ -1,4 +1,4 @@
-# Aircraft Maintenance Tracker ✈️
+readme_content = '''# Aircraft Maintenance Tracker ✈️
 
 A web-based application for recording and tracking aircraft maintenance tasks, built with Python and Flask. Developed as a capstone project connecting software development skills with an Airframe Powerplant background.
 
@@ -58,3 +58,9 @@ python "Aircraft Maintenance Tracker.py"
 ## About This Project
 
 I built this project as a capstone assignment connecting my Airframe Powerplant background to software development. Rather than a generic CRUD app, this tool reflects a real use case from the aviation maintenance world — tracking the status of maintenance tasks across aircraft and components.
+'''
+
+with open("README.md", "w", encoding="utf-8") as f:
+    f.write(readme_content)
+
+print("README.md berhasil ditulis ulang!")
